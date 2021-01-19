@@ -3,16 +3,16 @@ import java.io.*;
 
 public class TSP {
 	
-	private static int min_distance = Integer.MAX_VALUE;
-	private static int MAX_N = 10;
-	private static int[][] adjacency_matrix = new int[MAX_N][MAX_N];
+	public static int min_distance = Integer.MAX_VALUE;
+	public static int MAX_N = 10;
+	public static int[][] adjacency_matrix = new int[MAX_N][MAX_N];
 		
 	public static int find_path_length(int[] perm){
-			int curr = 0;
+			int current = 0;
             for(int i=0; i<perm.length - 1; i++){
-                curr += adjacency_matrix[perm[i]][perm[i+1]];
+                current += adjacency_matrix[perm[i]][perm[i+1]];
             }
-			return curr;
+			return current;
 	}
 
 	public static void process_kth_permutation(int n, int k){
