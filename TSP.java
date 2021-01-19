@@ -4,7 +4,7 @@ import java.io.*;
 public class TSP {
 	
 	public static int min_distance = Integer.MAX_VALUE;
-	public static final int MAX_N = 10;
+	public static int MAX_N = 10;
 	public static int[][] adjacency_matrix = new int[MAX_N][MAX_N];
 		
 	public static int find_path_length(int[] perm){
