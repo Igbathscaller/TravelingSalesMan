@@ -1,17 +1,23 @@
 import java.util.*;
+import java.io.*;
 
-public class TSP{
-
+public class TSP {
+	
 	public static int min_distance = Integer.MAX_VALUE;
 	public static final int MAX_N = 10;
 	public static int[][] adjacency_matrix = new int[MAX_N][MAX_N];
 		
 	public static int find_path_length(int[] perm){
-		return 0;
+			int curr = 0;
+            for(int i=0; i<perm.length - 1; i++){
+                curr += adjacency_matrix[perm[i]][perm[i+1]];
+            }
+			return curr;
 	}
 
-	public static void process_kth_permutation(int[] perm){
-		
+	public static void process_kth_permutation(int n, int k){
+			int[] perm = find_kth_permutation(n,k);
+			min_distance = Math.min(min_distance, find_path_length(perm));
 	}
 	
 	public static int factorial(int n){
@@ -44,10 +50,30 @@ public class TSP{
 		}
 		return perm;
 	}
-  
-	public static void main(String[] args){
-		for(int i=0; i<6; i++){
-			System.out.println(Arrays.toString(find_kth_permutation(3,i)));
+
+    public static void main(String[] args){
+        //input parsing
+        Scanner in = new Scanner(System.in);
+        ArrayList<String> places = new ArrayList<String>();
+
+        while(in.hasNextLine()){
+            String line = in.nextLine();
+            String[] words = line.split(" ");
+            if(!places.contains(words[0]))
+				places.add(words[0]);
+            if(!places.contains(words[2]))
+				places.add(words[2]);
+			adjacency_matrix[places.indexOf(words[0])][places.indexOf(words[2])] = Integer.parseInt(words[5]);
+            adjacency_matrix[places.indexOf(words[2])][places.indexOf(words[0])] = Integer.parseInt(words[5]);
+        }
+
+
+		int num_cities = places.size();
+		for(int i=0; i<factorial(num_cities); i++){
+			process_kth_permutation(num_cities, i);
 		}
-	}
+
+        //print solution
+        System.out.println(min_distance);
+    }
 }
