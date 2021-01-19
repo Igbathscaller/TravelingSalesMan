@@ -1,0 +1,10 @@
+a to b = 61
+a to c = 62
+a to d = 63
+a to e = 65
+b to c = 15
+b to d = 19
+b to e = 11
+c to d = 25
+c to e = 21
+d to e = 101
