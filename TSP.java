@@ -64,8 +64,8 @@ public class TSP {
 				places.add(words[0]);
             if(!places.contains(words[2]))
 				places.add(words[2]);
-			adjacency_matrix[places.indexOf(words[0])][places.indexOf(words[2])] = Integer.parseInt(words[5]);
-            adjacency_matrix[places.indexOf(words[2])][places.indexOf(words[0])] = Integer.parseInt(words[5]);
+			adjacency_matrix[places.indexOf(words[0])][places.indexOf(words[2])] = Integer.parseInt(words[4]);
+            adjacency_matrix[places.indexOf(words[2])][places.indexOf(words[0])] = Integer.parseInt(words[4]);
         }
 
 
