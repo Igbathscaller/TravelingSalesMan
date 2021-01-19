@@ -43,13 +43,11 @@ public class TSP {
 				if(count == -1){
 					curr = j;
 					visited[j] = true;
-					System.out.println(Arrays.toString(visited));
 					break;
 				}
 			}
 			perm[i] = curr;
-			if(tmpcount != 0)
-				k -= (k/tmpcount * tmpcount);
+			k %= factorial(n-i-1);
 		}
 		return perm;
 	}
