@@ -27,26 +27,29 @@ public class TSP {
 	}
 
 	public static int[] find_kth_permutation(int n, int k){
+		//kth permutation of n numbers
 		int[] perm = new int[n];
+		boolean[] visited = new boolean[n];
+
 		for(int i=0; i<n; i++){
-			boolean[] visited = new boolean[n];
-			int count = k/factorial(n-i);
-			
+			int count = k/factorial(n-i-1);
+			int tmpcount = count;
 			//find 0-indexed count-th number that hasn't been visited
 			int curr = -1;
-			for(int j=0; j<n; i++){
+			for(int j=0; j<n; j++){
 				if(!visited[j]){
 					--count;
 				}
 				if(count == -1){
 					curr = j;
 					visited[j] = true;
+					System.out.println(Arrays.toString(visited));
 					break;
 				}
 			}
-
 			perm[i] = curr;
-			k -= k/factorial(n-i);
+			if(tmpcount != 0)
+				k -= (k/tmpcount * tmpcount);
 		}
 		return perm;
 	}
