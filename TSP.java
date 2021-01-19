@@ -32,7 +32,6 @@ public class TSP {
 
 		for(int i=0; i<n; i++){
 			int count = k/factorial(n-i-1);
-			int tmpcount = count;
 			//find 0-indexed count-th number that hasn't been visited
 			int curr = -1;
 			for(int j=0; j<n; j++){
