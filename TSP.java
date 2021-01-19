@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 public class TSP {
 	
@@ -66,15 +65,16 @@ public class TSP {
 				places.add(words[2]);
 			adjacency_matrix[places.indexOf(words[0])][places.indexOf(words[2])] = Integer.parseInt(words[4]);
             adjacency_matrix[places.indexOf(words[2])][places.indexOf(words[0])] = Integer.parseInt(words[4]);
-        }
-
-
+		}
+		
 		int num_cities = places.size();
 		for(int i=0; i<factorial(num_cities); i++){
 			process_kth_permutation(num_cities, i);
 		}
-
+		
         //print solution
         System.out.println(min_distance);
+		
+		in.close();
     }
 }
