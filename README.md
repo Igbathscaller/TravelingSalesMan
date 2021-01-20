@@ -11,6 +11,7 @@ focus in on one specific permutation.
 When you divide k by (n-1)! you're basically choosing a branch.
 
 What it looks like:
+
                               [0,1,2]  
                               /   |    \
                              0    1     2
