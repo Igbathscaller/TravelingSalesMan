@@ -1,11 +1,11 @@
 import java.util.*;
 
 public class TSP {
-	
+
 	public static int min_distance = Integer.MAX_VALUE;
 	public static int MAX_N = 10;
 	public static int[][] adjacency_matrix = new int[MAX_N][MAX_N];
-		
+
 	public static int find_path_length(int[] perm){
 			int current = 0;
             for(int i=0; i<perm.length - 1; i++){
@@ -18,9 +18,9 @@ public class TSP {
 			int[] perm = find_kth_permutation(n,k);
 			min_distance = Math.min(min_distance, find_path_length(perm));
 	}
-	
+
 	public static int factorial(int n){
-		if(n==0) 
+		if(n==0)
 			return 1;
 		return n*factorial(n-1);
 	}
@@ -52,28 +52,30 @@ public class TSP {
 
     public static void main(String[] args){
         //input parsing
-        Scanner in = new Scanner(System.in);
+		Scanner s = new Scanner(System.in);
         ArrayList<String> places = new ArrayList<String>();
-
-        while(in.hasNextLine()){
-            String line = in.nextLine();
-            String[] words = line.split(" ");
-            if(!places.contains(words[0]))
-				places.add(words[0]);
-            if(!places.contains(words[2]))
-				places.add(words[2]);
-			adjacency_matrix[places.indexOf(words[0])][places.indexOf(words[2])] = Integer.parseInt(words[4]);
-            adjacency_matrix[places.indexOf(words[2])][places.indexOf(words[0])] = Integer.parseInt(words[4]);
+        while (s.hasNext()) {
+            String line = s.nextLine();
+            Scanner l = new Scanner(line);
+            String start = l.next();
+            if (!places.contains(start)) places.add(start);
+            l.next();
+            String end = l.next();
+            if (!places.contains(end)) places.add(end);
+            l.next();
+            int dist = l.nextInt();
+            adjacency_matrix[places.indexOf(start)][places.indexOf(end)] = dist;
+            adjacency_matrix[places.indexOf(end)][places.indexOf(start)] = dist;
 		}
-		
+
 		int num_cities = places.size();
 		for(int i=0; i<factorial(num_cities); i++){
 			process_kth_permutation(num_cities, i);
 		}
-		
+
         //print solution
         System.out.println(min_distance);
-		
+
 		in.close();
     }
 }
