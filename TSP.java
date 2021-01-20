@@ -76,6 +76,6 @@ public class TSP {
         //print solution
         System.out.println(min_distance);
 
-		in.close();
+		s.close();
     }
 }
