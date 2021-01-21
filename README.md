@@ -1,5 +1,7 @@
 # TravelingSalesMan
 
+GROUP 1: David Hu, Alvin Li, Charlotte (Nour) Kastoun, Aidan Fingeret, Angela Cai, Andrew Juang
+
 Minutes from our breakout room discussion on Monday and from our RocketChat thread:
 
 PLAN:
